@@ -1,9 +1,12 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
+// import { useFonts } from 'expo-font';
 
 import Home from './screens/Home';
 import Details from './screens/Details';
+
+import { useEffect, useState } from 'react';
+import { useFonts } from 'expo-font';
 
 const Stack = createStackNavigator();
 
@@ -12,7 +15,7 @@ const theme = {
   colors: {
     ...DefaultTheme.colors,
     background: 'transparent',
-  },
+  }
 }
 
 function App() {
@@ -28,12 +31,14 @@ function App() {
   if(!loaded) return null;
 
   return (
-    <NavigationContainer theme={theme} >
+    <NavigationContainer 
+    // theme={theme}
+     >
       <Stack.Navigator screenOptions={{ headerShown: false }}
         initialRouteName='Home'
       >
-        <Stack.Screen name='Home' component={Home} />
         <Stack.Screen name='Details' component={Details} />
+        <Stack.Screen name='Home' component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
   );
